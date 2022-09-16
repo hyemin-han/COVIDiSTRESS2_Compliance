@@ -99,6 +99,11 @@ mod1.pss$es.invariance['R2',]
 #loadings intercepts 
 # 0.9861811  0.9930769   Very good
 
+#extract languages with n>=100
+n.langs <- table(data$UserLanguage)
+list.langs <- labels(n.langs)[[1]]
+langs.include <- list.langs[n.langs>=100]
+
 # factor score calculation
 
 for (i in 1:length(langs.include)){
@@ -134,6 +139,7 @@ for (i in 1:length(langs.include)){
 }
 
 # save csv
-write.csv(data.filtered,file='../data_aligned.csv',row.names = F)
+write.csv(data.aligned,file='../data_aligned.csv',row.names = F)
 
+# do MI-based MGCFA
 
