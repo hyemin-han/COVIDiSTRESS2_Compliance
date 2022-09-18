@@ -211,10 +211,13 @@ for (i in 1:nrow(gm.PSS)){
 
 # null model/intercept/full(slopes)
 prior.coef <- brms::prior(cauchy(0.,1),class='b')
-b.test.0 <- brms::brm(CS ~ (1 | residing_country) ,
+b.test.0 <- brms::brm(CS ~ SSS_faml + age + gender + relationship_status + work_location + 
+                        cohabiting_adults_no + cohabiting_kids_no_1 + cohabiting_kids_no_2 + 
+                        cohabiting_kids_no_3 +(1 | residing_country) ,
                       data=data.test, family = gaussian(),
                       cores=4,chains=4, save_pars = save_pars(all = T),
-                      sample_prior ='yes', seed=1660415, iter=10000)
+                      sample_prior ='yes', seed=1660415, iter=10000,
+                      prior=prior.coef)
 b.test.1<- brms::brm(CS ~ PSS + SSS_faml + age + gender + relationship_status + work_location + 
     cohabiting_adults_no + cohabiting_kids_no_1 + cohabiting_kids_no_2 + 
     cohabiting_kids_no_3 + (1 | residing_country) +trust_1 + 
@@ -236,8 +239,8 @@ b.test.2<- brms::brm(CS ~ PSS + SSS_faml + age + gender + relationship_status + 
                      iter=10000)
 
 # bayes factor comparison
-bf.10 <- bayes_factor(b.test.1,b.test.0,log=T) #5878.88703
-bf.20 <- bayes_factor(b.test.2,b.test.0,log=T,maxiter=10000) #5945.09865
+bf.10 <- bayes_factor(b.test.1,b.test.0,log=T) #2378.51192
+bf.20 <- bayes_factor(b.test.2,b.test.0,log=T,maxiter=10000) #2444.58583
 bf.21 <- bayes_factor(b.test.2,b.test.1,log=T,maxiter=10000) # 66.46738
 
 # best <- random slopes

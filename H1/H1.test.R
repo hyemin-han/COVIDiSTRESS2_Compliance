@@ -46,5 +46,26 @@ log(h.s2$hypothesis$Evid.Ratio)
 
 hats<-round(b.test.2$rhats,3)[,1:9]
 
+
+##### 
+# frequentist
+library(lmerTest)
+library(merTools) # cite merTools
+
+# do fitting
+mod.2.list <- lmerModList(CS ~ S1+S2+(1+S1+S2|residing_country),
+                          data= data.H1)
+
+'
+Fixed Effects:
+            estimate std.error statistic            df
+(Intercept)    0.058     0.053     1.093 551228263.603
+S1             0.282     0.018    15.318   4317505.332
+S2             0.194     0.015    13.326   2462306.428'
+
+# t-test for S1 and S2
+dt(15.318, df = 4317505.332) #<.001
+dt(13.326, df = 2462306.428) #<.001
+
 # save
 save.image('H1.result.RData')
