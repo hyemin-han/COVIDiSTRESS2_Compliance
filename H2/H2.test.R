@@ -275,6 +275,22 @@ log(1/h.request$hypothesis$Evid.Ratio) # 2.300696 -
 log(1/h.NA$hypothesis$Evid.Ratio) # 2.46492
 log(1/h.kid1$hypothesis$Evid.Ratio) # 0.1506536
 
+
+# additional numbers
+2*log(1/hypothesis(b.test.2,'relationship_statusSingle=0')$hypothesis$Evid.Ratio) #-4.191761
+2*log(1/hypothesis(b.test.2,'relationship_statusCohabitating=0')$hypothesis$Evid.Ratio)#-4.513815
+2*log(1/hypothesis(b.test.2,'relationship_statusSeparatedDdivorced=0')$hypothesis$Evid.Ratio)#--3.28407
+2*log(1/hypothesis(b.test.2,'relationship_statusWidowed=0')$hypothesis$Evid.Ratio) #1.956581
+2*log(1/hypothesis(b.test.2,'relationship_statusOtherorwouldnotsay=0')$hypothesis$Evid.Ratio) #-1.55951
+
+2*log(1/hypothesis(b.test.2,'genderOtherDWouldrathernotsay=0')$hypothesis$Evid.Ratio) #-0.5107212
+2*log(1/hypothesis(b.test.2,'work_locationDontknowDprefernottosay=0')$hypothesis$Evid.Ratio) #-0.7037723
+2*log(1/hypothesis(b.test.2,'work_locationOtherlocations=0')$hypothesis$Evid.Ratio) #1.156162
+
+2*log(1/hypothesis(b.test.2,'cohabiting_adults_no=0')$hypothesis$Evid.Ratio) #-6.520622
+2*log(1/hypothesis(b.test.2,'cohabiting_kids_no_2=0')$hypothesis$Evid.Ratio) #-6.034203
+2*log(1/hypothesis(b.test.2,'cohabiting_kids_no_3=0')$hypothesis$Evid.Ratio) #-6.503352
+
 # frequentist analysis with the best model
 test.2 <- lmer(CS ~ PSS + SSS_faml + age + gender + relationship_status + work_location + 
              cohabiting_adults_no + cohabiting_kids_no_1 + cohabiting_kids_no_2 + 
