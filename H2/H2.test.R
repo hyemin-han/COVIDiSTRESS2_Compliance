@@ -249,12 +249,28 @@ h.trust_5<-hypothesis(b.test.2,'trust_5=0')
 h.trust_7<-hypothesis(b.test.2,'trust_7=0')
 h.hc<-hypothesis(b.test.2,'hc=0')
 
+h.age <- hypothesis(b.test.2,'age=0')
+h.male<- hypothesis(b.test.2,'genderMale=0')
+h.dating<- hypothesis(b.test.2,'relationship_statusDating=0')
+h.home <- hypothesis(b.test.2,'work_locationAthome=0')
+h.request <- hypothesis(b.test.2,'work_locationAtlocationsIwassenttobymyemployerorrequestedtogotobyaclient
+                        =0')
+h.NA <- hypothesis(b.test.2,'work_locationNA=0')
+h.kid1 <- hypothesis(b.test.2,'cohabiting_kids_no_1=0')
+
 log(1/h.PSS$hypothesis$Evid.Ratio) # 4.168339
-log(1/h.SES$hypothesis$Evid.Ratio) # --1.828466
+log(1/h.SES$hypothesis$Evid.Ratio) # --1.828466 -> x
 log(1/h.trust_1$hypothesis$Evid.Ratio) # 2.918206
 log(1/h.trust_5$hypothesis$Evid.Ratio) # 34.85931
 log(1/h.trust_7$hypothesis$Evid.Ratio) # 38.52488
 log(1/h.hc$hypothesis$Evid.Ratio) # 38.99873
+log(1/h.age$hypothesis$Evid.Ratio) # Inf +
+log(1/h.male$hypothesis$Evid.Ratio) # Inf -
+log(1/h.dating$hypothesis$Evid.Ratio) # 0.2887181 -> x
+log(1/h.home$hypothesis$Evid.Ratio) # 41.1946 +
+log(1/h.request$hypothesis$Evid.Ratio) # 2.300696 -
+log(1/h.NA$hypothesis$Evid.Ratio) # 2.46492
+log(1/h.kid1$hypothesis$Evid.Ratio) # 0.1506536
 
 # frequentist analysis with the best model
 test.2 <- lmer(CS ~ PSS + SSS_faml + age + gender + relationship_status + work_location + 
