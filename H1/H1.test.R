@@ -69,3 +69,11 @@ dt(13.326, df = 2462306.428) #<.001
 
 # save
 save.image('H1.result.RData')
+
+# random slopes
+# ROPE
+library(bayestestR)
+# get tables
+btable.h1 <- describe_posterior(b.test.2, effect='random')
+# save result
+write.csv(as.data.frame(btable.h1),'H1_TABLE.csv')
